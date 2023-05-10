@@ -62,6 +62,48 @@ void bezierPlot(point *controlPoints, int numberOfControlPoints, int numberOfBez
     delete[] ncrValues;
 }
 
+    void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    int number_of_control_points = 4, number_of_bezier_points = 20;
+
+    point controlPoints[4] = {{100, 400, 0}, {150, 450, 0}, {250, 350, 0}, {300, 400, 0}};
+
+    controlPoints[1].x += 50 * sin(theta * PI / 180.0);
+    controlPoints[1].y += 25 * sin(theta * PI / 180.0);
+
+    controlPoints[2].x -= 50 * sin((theta + 30) * PI / 180.0);
+    controlPoints[2].y -= 50 * sin((theta + 30) * PI / 180.0);
+
+    controlPoints[3].x -= 25 * sin((theta - 30) * PI / 180.0);
+    controlPoints[3].y += sin((theta - 30) * PI / 180.0);
+
+    theta += 2;
+
+    glPushMatrix();
+
+    glPointSize(5);
+
+    glColor3f(1, 0.4, 0.2); //Indian flag: Saffron color code
+    for(int i=0; i<50; i++)
+    {
+        glTranslatef(0, -0.8, 0 );
+        bezierPlot(controlPoints, number_of_control_points, number_of_bezier_points);
+    }
+
+    glColor3f(1, 1, 1); //Indian flag: white color code
+    for(int i=0; i<50; i++)
+    {
+        glTranslatef(0, -0.8, 0);
+        bezierPlot(controlPoints, number_of_control_points, number_of_bezier_points);
+    }
+
+    glColor3f(0, 1, 0); //Indian flag: green color code
+    for(int i=0; i<50; i++)
+    {
+        glTranslatef(0, -0.8, 0);
+        bezierPlot(controlPoints, number_of_control_points, number_of_bezier_points);
+    }
 
     glPopMatrix();
 
