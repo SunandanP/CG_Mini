@@ -67,16 +67,16 @@ void display()
     glClear(GL_COLOR_BUFFER_BIT);
     int number_of_control_points = 4, number_of_bezier_points = 20;
 
-    point control_points_array[4] = {{100, 400, 0}, {150, 450, 0}, {250, 350, 0},{300, 400, 0}};
+    point controlPoints[4] = {{100, 400, 0}, {150, 450, 0}, {250, 350, 0}, {300, 400, 0}};
 
-    control_points_array[1].x += 50*sin(theta * PI/180.0);
-    control_points_array[1].y += 25*sin(theta * PI/180.0);
+    controlPoints[1].x += 50 * sin(theta * PI / 180.0);
+    controlPoints[1].y += 25 * sin(theta * PI / 180.0);
 
-    control_points_array[2].x -= 50*sin((theta+30) * PI/180.0);
-    control_points_array[2].y -= 50*sin((theta+30) * PI/180.0);
+    controlPoints[2].x -= 50 * sin((theta + 30) * PI / 180.0);
+    controlPoints[2].y -= 50 * sin((theta + 30) * PI / 180.0);
 
-    control_points_array[3].x -= 25*sin((theta-30) * PI/180.0);
-    control_points_array[3].y += sin((theta-30) * PI/180.0);
+    controlPoints[3].x -= 25 * sin((theta - 30) * PI / 180.0);
+    controlPoints[3].y += sin((theta - 30) * PI / 180.0);
 
     theta += 2;
 
@@ -88,21 +88,21 @@ void display()
     for(int i=0; i<50; i++)
     {
         glTranslatef(0, -0.8, 0 );
-        bezierPlot(control_points_array, number_of_control_points, number_of_bezier_points);
+        bezierPlot(controlPoints, number_of_control_points, number_of_bezier_points);
     }
 
     glColor3f(1, 1, 1); //Indian flag: white color code
     for(int i=0; i<50; i++)
     {
         glTranslatef(0, -0.8, 0);
-        bezierPlot(control_points_array, number_of_control_points, number_of_bezier_points);
+        bezierPlot(controlPoints, number_of_control_points, number_of_bezier_points);
     }
 
     glColor3f(0, 1, 0); //Indian flag: green color code
     for(int i=0; i<50; i++)
     {
         glTranslatef(0, -0.8, 0);
-        bezierPlot(control_points_array, number_of_control_points, number_of_bezier_points);
+        bezierPlot(controlPoints, number_of_control_points, number_of_bezier_points);
     }
 
     glPopMatrix();
@@ -151,9 +151,7 @@ int main(int argc, char **argv)
     glutInitWindowPosition(0, 0);
     glutInitWindowSize(500,500);
     glutCreateWindow("Flag using Bazier Curve");
-
     init();
-
     glutDisplayFunc(display);
     glutMainLoop();
 }
